@@ -20,7 +20,7 @@ const myEpic = (
     .switchMap(action => {
       return Observable.timer(0, 1000)
         .switchMap(tick => {
-          return Observable.from(fetch('http://api.fubo.tv/heartbeat').then(res => 'all done' + tick))
+          return Observable.from(Promise.resolve('anything:' + tick))
             .map(someSuccessMapperWithTick(tick))
             .catch(error => {
               console.log('error in Observable.from')
